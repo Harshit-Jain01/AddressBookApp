@@ -76,6 +76,25 @@ This feature allows modification of stored contact details while keeping the con
     ```
   - The endpoint receives `firstName` and `lastName` as query parameters to locate the contact that needs to be removed.
   - Added unit tests to validate successful deletion, handle cases where the contact does not exist, and situations where the specified Address Book is not available.
+
+---
+## 🧩 UC5 – Support Multiple Contacts :
+  - Enhances the Address Book so it can store and manage multiple contacts using Java collections.
+  - Allows fetching all contacts that belong to a particular Address Book.
+
+  **Purpose**
+  - Enable the Address Book to maintain several contact records instead of only one.
+  - Provide an API that returns all contacts stored in a selected Address Book.
+
+  **Implementation**
+  - Used `List<Contact>` within the `AddressBook` model to store multiple contact entries.
+  - Created a `getContacts()` method in `AddressBookService` to return the list of contacts for a specified Address Book.
+  - Implemented a REST endpoint in `AddressBookController`:
+    ```
+    GET /addressbooks/{bookName}/contacts
+    ```
+  - Added unit tests to check scenarios such as multiple contacts, empty contact lists, duplicate contacts, large datasets, and handling of multiple Address Books.
+
 ---
 ### 📂 Project Structure
 
