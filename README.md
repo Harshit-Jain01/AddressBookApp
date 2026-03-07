@@ -228,6 +228,26 @@ This feature allows modification of stored contact details while keeping the con
     GET /addressbooks/{bookName}/sort/zip
     ```
   - Added unit tests to verify sorting behavior, including cases with empty Address Books and scenarios containing a single contact.
+---
+## 🧩 UC13 – File I/O Integration :
+  - Adds support for storing and retrieving Address Book contacts using Java File I/O.
+  - Allows contacts to be written to a file and later read back into the application.
+
+  **Purpose**
+  - Enable Address Book data to be saved permanently outside the application's runtime memory.
+  - Allow contacts to be restored from a saved file whenever needed.
+
+  **Implementation**
+  - Developed a helper class `FileUtil` to handle file operations using `BufferedWriter` and `BufferedReader`.
+  - Implemented functionality to export contacts from an Address Book to a file and import them back into memory.
+  - Added REST endpoints in `AddressBookController`:
+    ```
+    POST /addressbooks/{bookName}/save
+    GET /addressbooks/load
+    ```
+  - Added unit tests to verify file creation, reading data from files, handling empty files, and persisting multiple contacts.
+
+---
 ### 📂 Project Structure
 
 ```
@@ -245,6 +265,10 @@ AddressBookApp
 │   │   │   │
 │   │   │   ├── service
 │   │   │   │   └── AddressBookService.java
+│   │   │   │
+│   │   │   ├── util
+│   │   │   │   └── FileUtil.java
+│   │   │   │
 │   │   │   │
 │   │   │   └── AddressBookApplication.java
 │   │   │
