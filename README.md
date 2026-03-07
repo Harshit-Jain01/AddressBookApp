@@ -24,22 +24,55 @@ This use case introduces the **Contact domain model**, which represents a single
 - Added a **JUnit test (`ContactTest`)** to ensure that Contact objects are created correctly.
 
 ---
+## 🧩 UC2 – Add New Contact to Address Book
+
+Introduces the capability to insert a new contact into the Address Book.  
+This use case demonstrates how Object-Oriented Programming is used to manage the relationship between the **AddressBook** and **ContactPerson** classes.
+
+### Purpose
+
+- Allow the system to store contact details inside the Address Book.
+- Demonstrate how contacts are organized and maintained within the Address Book.
+- Apply Object-Oriented principles to manage the association between AddressBook and ContactPerson.
+
+### Implementation
+
+- Created a **ContactPerson class** to represent an individual contact with attributes such as first name, last name, address, city, state, zip, phone number, and email.
+- Implemented an **AddressBook class** that maintains a collection of contacts.
+- Used **List<ContactPerson>** to store multiple contacts in the Address Book.
+- Implemented functionality to add new contacts through the **AddressBookMain class using console input**.
+- Ensured proper interaction between AddressBook and ContactPerson using Object-Oriented concepts.
+
+---  
 ### 📂 Project Structure
+
 ```
 AddressBookApp
 │
 ├── src
 │   ├── main
-│   │   └── java/com/addressbook
-│   │       ├── model
-│   │       │   └── Contact.java
-│   │       └── AddressBookApplication.java
+│   │   ├── java/com/addressbookapp
+│   │   │   ├── controller
+│   │   │   │   └── AddressBookController.java
+│   │   │   │
+│   │   │   ├── model
+│   │   │   │   ├── AddressBook.java
+│   │   │   │   └── Contact.java
+│   │   │   │
+│   │   │   ├── service
+│   │   │   │   └── AddressBookService.java
+│   │   │   │
+│   │   │   └── AddressBookApplication.java
+│   │   │
+│   │   └── resources
+│   │       └── application.properties
 │   │
 │   └── test
-│       └── java/com/addressbook
+│       └── java/com/addressbookapp
+│           ├── AddressBookServiceTest.java
+│           ├── AddressbookappApplicationTests.java
 │           └── ContactTest.java
-│           └── AddressBookApplicationTests.java
-├── pom.xml
+│── pom.xml
 └── README.md
 ```
 
