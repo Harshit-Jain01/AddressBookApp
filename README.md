@@ -44,6 +44,23 @@ This use case demonstrates how Object-Oriented Programming is used to manage the
 - Ensured proper interaction between AddressBook and ContactPerson using Object-Oriented concepts.
 
 ---  
+## 🧩 UC3 – Update Existing Contact
+
+Adds the functionality to **update an existing contact** in the Address Book through a REST API.  
+This feature allows modification of stored contact details while keeping the contact record intact in the Address Book.
+
+### Purpose
+
+- Enable users to update contact information such as **address, city, state, zip code, phone number, and email**.
+- Provide a way to **identify a contact using the first name and last name** within a specific Address Book.
+
+### Implementation
+
+- Implemented an **`updateContact()` method** in `AddressBookService` to locate a contact using **firstName and lastName** and update the required details.
+- Created a **REST endpoint** in `AddressBookController`:
+
+
+---
 ### 📂 Project Structure
 
 ```
