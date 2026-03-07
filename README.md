@@ -130,6 +130,25 @@ This feature allows modification of stored contact details while keeping the con
   - Added unit tests to confirm duplicate detection, successful insertion of unique contacts, and allowing identical contacts in different Address Books.
 
 ---
+## 🧩 UC8 – Find Contacts by City or State :
+  - Adds functionality to search for contacts based on city or state across all Address Books.
+  - Allows filtering of contacts using their location details.
+
+  **Purpose**
+  - Help users easily locate contacts belonging to a particular city or state.
+  - Enable searching across every Address Book available in the system.
+
+  **Implementation**
+  - Implemented search logic in `AddressBookService` using Java Streams.
+  - Aggregated contacts from all Address Books and applied filters based on the provided city or state.
+  - Added REST endpoints in `AddressBookController`:
+    ```
+    GET /addressbooks/search/city/{city}
+    GET /addressbooks/search/state/{state}
+    ```
+  - Added unit tests to verify correct search results, case-insensitive comparisons, handling of multiple matches, and situations where no contacts are found.
+
+---
 ### 📂 Project Structure
 
 ```
