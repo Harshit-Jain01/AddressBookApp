@@ -115,6 +115,21 @@ This feature allows modification of stored contact details while keeping the con
   - Added unit tests to validate creation of multiple Address Books, avoid duplicate Address Book creation, and ensure proper separation of contacts between Address Books.
 
 ---
+## 🧩 UC7 – Avoid Duplicate Contacts :
+  - Improves the Address Book system by ensuring that duplicate contacts cannot be stored within the same Address Book.
+  - Each contact is uniquely determined using the combination of first name and last name.
+
+  **Purpose**
+  - Preserve data accuracy by preventing repeated contact entries.
+  - Ensure that the same individual cannot be added multiple times to a single Address Book.
+
+  **Implementation**
+  - Introduced validation logic in `AddressBookService` to check for existing contacts before inserting a new one.
+  - Used Java Streams with the `anyMatch()` method to detect if a contact with the same `firstName` and `lastName` already exists.
+  - If a duplicate is found, an exception is thrown to stop the contact from being added.
+  - Added unit tests to confirm duplicate detection, successful insertion of unique contacts, and allowing identical contacts in different Address Books.
+
+---
 ### 📂 Project Structure
 
 ```
