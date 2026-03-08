@@ -397,6 +397,22 @@ Enhances the Address Book system to support adding new contact records directly 
   ```
 - Added tests to verify that multiple contacts are inserted successfully and that all threads finish execution before the API response is returned.
 ---
+### 🧩 UC22 – Fetch Contacts from JSON Server using REST Assured :
+  - Extends the AddressBook system to obtain contact records from an external JSON server through REST API calls executed in automated test cases.
+
+  **Purpose**
+  - Allow the application to communicate with an external REST service that provides contact information.
+  - Illustrate REST API testing using the **REST Assured** library.
+
+  **Implementation**
+  - Installed and configured **json-server** to act as a mock REST API using a `db.json` file containing sample contact records.
+  - Launched the JSON server on **port 3000**, exposing endpoints such as:
+    ```
+    GET /contacts
+    ```
+  - Added the **REST Assured dependency** to the project to enable HTTP request handling within JUnit tests.
+  - Created a test case that sends a **GET request** to the JSON server endpoint and verifies the **HTTP status code** along with the **contact data returned in the response**.
+---
 ### 📂 Project Structure
 
 ```
