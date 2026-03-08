@@ -86,10 +86,24 @@ public class AddressBookJsonServerTest {
                         .contentType("application/json")
                         .body(updatedContact)
                         .when()
-                        .put("http://localhost:3000/contacts/1");
+                        .put("http://localhost:3000/contacts/3");
 
         assertEquals(200, response.getStatusCode());
 
         //System.out.println(response.getBody().asPrettyString());
+    }
+    
+    @Test
+    public void givenExistingContact_whenDeleted_shouldReturnSuccess() {
+
+        Response response =
+                RestAssured
+                        .given()
+                        .when()
+                        .delete("http://localhost:3000/contacts/3");
+
+        assertEquals(200, response.getStatusCode());
+
+        System.out.println("Contact deleted successfully");
     }
 }
