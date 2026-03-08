@@ -460,6 +460,7 @@ AddressBookApp
 │       └── java/com/addressbookapp
 │           ├── AddressBookApplicationTests.java
 │           ├── AddressBookServiceTest.java
+|           ├── AddressBookJsonServerTest.java
 │           ├── ContactRepositoryTest.java
 │           └── ContactTest.java
 │
