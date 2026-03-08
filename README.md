@@ -321,6 +321,22 @@ Adds the capability to modify a contact’s city directly in the database using 
 PUT /addressbooks/db/update-city
 ``` 
 ---
+## 🧩 UC18 – Fetch Contacts Within a Date Range :
+  - Extends the database querying feature to allow retrieval of contacts added within a defined date range.
+  - Supports filtering contact records based on their creation date.
+
+ ### Purpose
+  - Enable users to view contacts that were added to the Address Book during a particular time interval.
+  - Provide date-based filtering to improve data retrieval and analysis.
+
+  **Implementation**
+  - Introduced a `date_added` column in the database to store the creation date of each contact.
+  - Updated `ContactRepository` to run a JDBC query using `PreparedStatement` that selects contacts whose `date_added` falls between two specified dates.
+  - Added a REST endpoint in `AddressBookController`:
+    ```
+    GET /addressbooks/db/contacts-by-date
+    ```
+  - Added unit tests to ensure accurate database filtering and proper retrieval of contacts within the given date range.
 ### 📂 Project Structure
 
 ```
