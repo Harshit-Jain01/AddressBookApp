@@ -248,6 +248,25 @@ This feature allows modification of stored contact details while keeping the con
   - Added unit tests to verify file creation, reading data from files, handling empty files, and persisting multiple contacts.
 
 ---
+## 🧩 UC14 – CSV File Integration
+
+Adds support for storing and retrieving Address Book contacts using a structured CSV file format.  
+This feature allows exporting contacts to CSV files and importing them back into the application.
+
+### Purpose
+- Enable contacts to be saved and loaded using a structured **CSV file format**.
+- Provide a **portable and standardized format** for storing contact data.
+
+### Implementation
+- Developed a utility class `CSVUtil` to handle CSV operations using the **OpenCSV** library (`CSVReader` and `CSVWriter`).
+- Implemented methods to write contacts from an Address Book to a CSV file and read contacts from a CSV file into memory.
+- Added REST API endpoints in `AddressBookController`:
+
+  **POST /addressbooks/{bookName}/save-csv**  
+  **GET /addressbooks/load-csv**
+
+- Included unit tests to verify CSV file creation, reading contacts from CSV files, handling multiple contacts, and processing empty CSV files.
+---
 ### 📂 Project Structure
 
 ```
@@ -268,7 +287,7 @@ AddressBookApp
 │   │   │   │
 │   │   │   ├── util
 │   │   │   │   └── FileUtil.java
-│   │   │   │
+│   │   │   │   └── CSVUtil.java
 │   │   │   │
 │   │   │   └── AddressBookApplication.java
 │   │   │
