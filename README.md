@@ -294,7 +294,7 @@ Introduces database integration to retrieve contacts using **JDBC** and refactor
 - Enable retrieval of contacts stored in a **relational database**.
 - Decouple storage logic from business logic to allow support for **multiple storage formats** such as **File, CSV, and JSON**.
 
-### ⚙️ Implementation
+###  Implementation
 
 - Externalized database configuration in `application.properties`, allowing Spring Boot to automatically configure a **DataSource**.
 - Implemented a **ContactRepository** to execute SQL queries and map database rows to `Contact` objects.
@@ -342,7 +342,7 @@ PUT /addressbooks/db/update-city
   - Extends the Address Book system to calculate the number of contacts stored in the database grouped by city and state.
   - Introduces a DTO layer to improve how data is transferred in API responses.
 
-  **Purpose**
+  ### Purpose
   - Enable the system to analyze how contacts are distributed across different locations.
   - Provide summarized statistics showing the number of contacts in each city or state.
   - Improve API structure by using DTO objects instead of directly exposing domain models.
@@ -358,6 +358,26 @@ PUT /addressbooks/db/update-city
 - Introduced `ContactDTO` to handle API request and response data.
 - Updated controller methods to return DTO objects while the service layer performs conversion between DTOs and entity models.
 - Added unit tests to verify correct grouping, counting, and DTO-based API responses.
+---
+### 🧩 UC20 – Insert Contact into Database Using JDBC
+
+Enhances the Address Book system to support adding new contact records directly into the database using JDBC with transactional handling.
+
+ ### Purpose
+
+- Allow the application to store newly created contacts permanently in the database.
+- Ensure reliable database operations by using transaction management to maintain data consistency.
+
+###  Implementation
+
+- Extended `ContactRepository` with an SQL `INSERT` query implemented using JDBC `PreparedStatement`.
+- Implemented transaction management using `setAutoCommit(false)`, `commit()`, and `rollback()` to maintain database integrity.
+- Added a service method in **AddressBookService** to handle inserting contacts through the repository layer.
+- Created a REST API endpoint in **AddressBookController**:
+ ```
+  POST /addressbooks/db/add-contact
+  ```
+- Added unit tests to verify successful database insertion and correct interaction with the repository layer.
 ---
 
 ### 📂 Project Structure
