@@ -337,6 +337,29 @@ PUT /addressbooks/db/update-city
     GET /addressbooks/db/contacts-by-date
     ```
   - Added unit tests to ensure accurate database filtering and proper retrieval of contacts within the given date range.
+---
+### 🧩 UC19 – Get Contact Count by City or State from Database :
+  - Extends the Address Book system to calculate the number of contacts stored in the database grouped by city and state.
+  - Introduces a DTO layer to improve how data is transferred in API responses.
+
+  **Purpose**
+  - Enable the system to analyze how contacts are distributed across different locations.
+  - Provide summarized statistics showing the number of contacts in each city or state.
+  - Improve API structure by using DTO objects instead of directly exposing domain models.
+
+  **Implementation**
+  - Utilized the existing JDBC database connection and `ContactRepository` to fetch contacts from the database.
+  - Implemented grouping and counting logic in the service layer using Java Streams with `groupingBy()` and `counting()`.
+  - Added REST endpoints in `AddressBookController`:
+  ```
+  GET /addressbooks/db/count/city
+  GET /addressbooks/db/count/state
+  ```
+- Introduced `ContactDTO` to handle API request and response data.
+- Updated controller methods to return DTO objects while the service layer performs conversion between DTOs and entity models.
+- Added unit tests to verify correct grouping, counting, and DTO-based API responses.
+---
+
 ### 📂 Project Structure
 
 ```
@@ -347,6 +370,9 @@ AddressBookApp
 │   │   ├── java/com/addressbookapp
 │   │   │   ├── controller
 │   │   │   │   └── AddressBookController.java
+│   │   │   |
+│   │   │   ├── dto
+│   │   │   │   └── ContactDTO.java
 │   │   │   │
 │   │   │   ├── model
 │   │   │   │   ├── AddressBook.java
