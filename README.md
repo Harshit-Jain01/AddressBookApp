@@ -413,6 +413,22 @@ Enhances the Address Book system to support adding new contact records directly 
   - Added the **REST Assured dependency** to the project to enable HTTP request handling within JUnit tests.
   - Created a test case that sends a **GET request** to the JSON server endpoint and verifies the **HTTP status code** along with the **contact data returned in the response**.
 ---
+### UC23 – Add Contacts to JSON Server using REST Assured
+  - Extends the AddressBook system to allow creation of new contact records on an external JSON server by sending REST API requests through automated tests.
+
+  **Purpose**
+  - Allow the application to insert new contact entries into a REST-based data source.
+  - Demonstrate the use of REST Assured for sending POST requests and validating API responses.
+
+  **Implementation**
+  - Configured the **json-server** mock REST API running on **port 3000**, using a `db.json` file to store contact data.
+  - Developed a REST Assured test that sends a **POST request** to:
+    ```
+    POST /contacts
+    ```
+  - Provided contact details in JSON format using `contentType("application/json")` along with a request body.
+  - Validated the API response by checking the HTTP status **201 Created** and confirming the returned JSON data.
+---
 ### 📂 Project Structure
 
 ```
