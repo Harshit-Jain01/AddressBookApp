@@ -445,6 +445,21 @@ Enhances the Address Book system to support adding new contact records directly 
   - Provided the updated contact information in JSON format using `contentType("application/json")` along with a request body.
   - Confirmed the API response by verifying the HTTP status **200 OK** and validating the returned JSON data.
 ---
+### 🧩 UC25 – Delete Contact from JSON Server via REST Assured :
+  - Extends the AddressBook application to allow deletion of contact entries from an external JSON server using REST API requests executed through automated tests.
+
+  **Purpose**
+  - Provide the capability to remove contact data stored in a REST-based service.
+  - Illustrate how REST Assured can be used to perform HTTP DELETE operations and verify the server response.
+
+  **Implementation**
+  - Utilized the **json-server** mock REST API running on **port 3000**, with contact information maintained in the `db.json` file.
+  - Developed a REST Assured test case that issues a **DELETE request** to the endpoint:
+    ```
+    DELETE /contacts/{id}
+    ```
+  - Confirmed successful deletion by validating the server response with HTTP status **200 OK**.
+---
 
 ### 📂 Project Structure
 
