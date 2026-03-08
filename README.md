@@ -300,6 +300,27 @@ Introduces database integration to retrieve contacts using **JDBC** and refactor
 - Implemented a **ContactRepository** to execute SQL queries and map database rows to `Contact` objects.
 - Added a REST API endpoint in `AddressBookController`:
 
+---
+
+## 🧩 UC17 – Update Contact City in Database
+
+Adds the capability to modify a contact’s city directly in the database using JDBC through the repository layer.
+
+###  Purpose
+
+- Allow updating of existing contact information stored in the database.
+- Demonstrate how database update operations can be performed using JDBC with Spring Boot DataSource configuration.
+
+### ⚙️ Implementation
+
+- Implemented an `updateContactCity()` method in **ContactRepository** that executes an SQL `UPDATE` statement using `PreparedStatement`.
+- Exposed the update functionality through **AddressBookService** to handle business logic.
+- Created a REST API endpoint in **AddressBookController**:
+
+```
+PUT /addressbooks/db/update-city
+``` 
+---
 ### 📂 Project Structure
 
 ```
