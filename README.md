@@ -285,6 +285,20 @@ This feature enables exporting contacts to JSON files and importing them back in
   **GET /addressbooks/load-json**
 
 - Included unit tests to verify JSON file creation, reading contacts from JSON files, handling multiple contacts, and processing empty JSON file scenarios.
+---
+## 🧩 UC16 – Retrieve Contacts from Database & Storage Layer Refactor
+
+Introduces database integration to retrieve contacts using **JDBC** and refactors the storage architecture to support multiple persistence formats through a **storage abstraction layer**.
+
+### Purpose
+- Enable retrieval of contacts stored in a **relational database**.
+- Decouple storage logic from business logic to allow support for **multiple storage formats** such as **File, CSV, and JSON**.
+
+### ⚙️ Implementation
+
+- Externalized database configuration in `application.properties`, allowing Spring Boot to automatically configure a **DataSource**.
+- Implemented a **ContactRepository** to execute SQL queries and map database rows to `Contact` objects.
+- Added a REST API endpoint in `AddressBookController`:
 
 ### 📂 Project Structure
 
@@ -301,12 +315,21 @@ AddressBookApp
 │   │   │   │   ├── AddressBook.java
 │   │   │   │   └── Contact.java
 │   │   │   │
+│   │   │   ├── repository
+│   │   │   │   └── ContactRepository.java
+│   │   │   │
 │   │   │   ├── service
 │   │   │   │   └── AddressBookService.java
 │   │   │   │
+│   │   │   ├── storage
+│   │   │   │   ├── ContactStorage.java
+│   │   │   │   ├── FileStorage.java
+│   │   │   │   ├── CSVStorage.java
+│   │   │   │   └── JSONStorage.java
+│   │   │   │
 │   │   │   ├── util
-│   │   │   │   └── FileUtil.java
-│   │   │   │   └── CSVUtil.java
+│   │   │   │   ├── FileUtil.java
+│   │   │   │   ├── CSVUtil.java
 │   │   │   │   └── JSONUtil.java
 │   │   │   │
 │   │   │   └── AddressBookApplication.java
@@ -316,10 +339,12 @@ AddressBookApp
 │   │
 │   └── test
 │       └── java/com/addressbookapp
+│           ├── AddressBookApplicationTests.java
 │           ├── AddressBookServiceTest.java
-│           ├── AddressbookappApplicationTests.java
+│           ├── ContactRepositoryTest.java
 │           └── ContactTest.java
-│── pom.xml
+│
+├── pom.xml
 └── README.md
 ```
 
